@@ -1,0 +1,5 @@
+SELECT pay_date AS 'day', SUM(amount) AS 'total'
+FROM payments
+WHERE status = 'paid' 
+GROUP BY day
+ORDER BY total DESC; 
