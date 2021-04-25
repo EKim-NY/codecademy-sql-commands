@@ -1,0 +1,8 @@
+SELECT name as 'Movie', imdb_rating AS 'Rating', year 
+FROM movies 
+WHERE name LIKE 'THE%'
+AND rating IS NOT null 
+AND rating > 7.0
+AND year BETWEEN 2010 and 2020
+ORDER BY imdb_rating DESC 
+LIMIT 10; 
