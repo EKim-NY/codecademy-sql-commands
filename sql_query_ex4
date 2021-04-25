@@ -1,0 +1,6 @@
+SELECT name as 'Comedy Movies', imdb_rating AS 'Rating', genre AS 'Movie Type'
+FROM movies 
+WHERE name LIKE 'Shrek%'
+AND year BETWEEN 2000 AND 2020 
+ORDER BY name
+LIMIT 5; 
