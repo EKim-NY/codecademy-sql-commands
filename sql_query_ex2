@@ -1,0 +1,5 @@
+SELECT name as 'Horror/Comedy Movies'
+FROM movies 
+WHERE genre = 'horror' 
+OR genre = 'comedy' 
+LIMIT 5; 
