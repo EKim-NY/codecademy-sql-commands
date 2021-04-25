@@ -1,0 +1,66 @@
+SELECT * 
+FROM met 
+LIMIT 10;
+-- id, department, category, title, artist, date, medium, country 
+
+SELECT COUNT(*)
+FROM met 
+WHERE department = 'American Decorative Arts'; 
+-- 3948 items categorized as American Decorative Arts. 
+
+SELECT COUNT(*)
+FROM met
+WHERE category LIKE '%celery%'; 
+-- 31 items which were designed to hold celery during Victorian times; Celery was a luxury for the rich back then. 
+
+SELECT title, medium, MIN(date) AS 'Oldest Piece'
+FROM met; 
+-- The Betty Lamp (ca. 1600-1700, iron) is the oldest piece in this dataset. 
+
+SELECT country, COUNT(country) AS 'pieces'
+FROM met 
+WHERE department = 'American Decorative Arts'
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10; 
+-- Find the top 10 countries with the most pieces in the collection. 
+
+SELECT category, COUNT(*) AS 'pieces'
+FROM met
+GROUP BY category
+HAVING pieces > 100; 
+-- Find the categories having more than 100 pieces. 
+
+SELECT medium, count(*) AS 'pieces'
+FROM met
+WHERE medium LIKE '%gold%' 
+OR medium LIKE '%silver%' 
+GROUP BY 1
+ORDER BY 2 DESC 
+LIMIT 10; 
+-- Count the # pieces where the medium contains gold or silver in descending order. 
+
+SELECT CASE
+   WHEN medium LIKE '%gold%'   THEN 'Gold'
+   WHEN medium LIKE '%silver%' THEN 'Silver'
+   ELSE NULL
+  END AS 'Bling',
+  COUNT(*)
+FROM met
+WHERE Bling IS NOT NULL
+GROUP BY 1
+ORDER BY 2 DESC;
+-- Find the total # items made with gold or silver. 
+
+SELECT 
+  CASE 
+    WHEN medium LIKE '%gold%' THEN 'GOLD'
+    WHEN medium LIKE '%silver%' THEN 'SILVER'
+    ELSE NULL
+  END AS 'Shiny_Metal', 
+  COUNT(*) AS 'Total_Count'
+FROM met
+WHERE Shiny_Metal IS NOT NULL
+GROUP BY Shiny_Metal
+ORDER BY 'Total_Count' DESC; 
+-- Use a CASE statement to find the total # items made with gold or silver. 
