@@ -1,0 +1,6 @@
+SELECT DISTINCT name, imdb_rating AS 'Rating', year
+FROM movies 
+WHERE year > 2000 
+AND imdb_rating > 8.0
+ORDER BY imdb_rating DESC
+LIMIT 5; 
