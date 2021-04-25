@@ -1,0 +1,22 @@
+ SELECT name, number
+ FROM babies 
+ WHERE name LIKE 'Mary'
+ AND year = 1880
+ AND gender = 'F'; 
+
+SELECT name 
+FROM nomnom 
+ORDER BY review DESC
+LIMIT 5; 
+
+SELECT name 
+FROM nomnom 
+WHERE cuisine = 'Chinese'
+ORDER BY review DESC
+LIMIT 5; 
+
+SELECT title
+FROM news 
+WHERE publisher = 'Wall Street Journal' 
+AND category = 't'; 
+
