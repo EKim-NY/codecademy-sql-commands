@@ -1,0 +1,46 @@
+SELECT * 
+FROM fake_apps
+LIMIT 3; 
+-- id, name, category, downloads, price
+-- category: Productivity, Education, Reference, Health & Fitness, Books, Sports, Medical, News, Entertainment, Food & Drink, Lifestyle, Utilities 
+
+SELECT COUNT(*) AS 'Total # Education Apps', name, price
+FROM fake_apps
+WHERE category LIKE 'Education'
+GROUP BY price
+ORDER BY name; 
+
+SELECT COUNT(*) AS 'Total # Food/Drink Apps'
+FROM fake_apps
+WHERE category LIKE 'Food & Drink'; 
+
+SELECT COUNT(category) AS 'Total # Lifestyle Apps'
+FROM fake_apps
+WHERE category LIKE 'Lifestyle'; 
+
+SELECT SUM(price), category, name
+FROM fake_apps
+WHERE price BETWEEN 0.0 and 5.00
+GROUP BY price; 
+
+SELECT MIN(price) AS 'Cheapest', name, category
+FROM fake_apps; 
+
+SELECT MAX(price) AS 'Priciest', name, category
+FROM fake_apps; 
+
+SELECT AVG(price) AS 'Avg Price of All Apps'
+FROM fake_apps; 
+
+SELECT ROUND(AVG(price)) AS 'Rounded Avg Price'
+FROM fake_apps; 
+
+SELECT price, name 
+FROM fake_apps
+GROUP BY price; 
+
+SELECT price AS '$0.99', name AS '99 cents Apps', category
+FROM fake_apps
+GROUP BY category
+HAVING price = 0.99; 
+
