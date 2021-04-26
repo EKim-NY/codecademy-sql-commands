@@ -1,0 +1,7 @@
+SELECT premium_users.user_id, 
+  plans.description
+FROM premium_users
+JOIN plans
+ON 
+premium_users.membership_plan_id = plans.id
+LIMIT 10; 
