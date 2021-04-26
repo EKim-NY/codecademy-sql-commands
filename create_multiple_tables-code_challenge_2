@@ -1,0 +1,17 @@
+ SELECT * 
+ FROM plays 
+ LIMIT 3; 
+-- user_id, song_id, play_date, play_hour
+
+ SELECT * 
+ FROM songs 
+ LIMIT 3; 
+ -- id, title, artist, year
+  
+ SELECT plays.user_id, 
+ plays.play_date, 
+ songs.title
+ FROM plays 
+ JOIN songs 
+ ON plays.song_id = songs.id
+ LIMIT 10; 
