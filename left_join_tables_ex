@@ -1,0 +1,20 @@
+SELECT * 
+FROM newspaper 
+LEFT JOIN online 
+ON newspaper.id = online.id
+LIMIT 3; 
+
+SELECT * 
+FROM newspaper 
+LEFT JOIN online 
+ON newspaper.id = online.id 
+WHERE online.id IS NULL 
+LIMIT 3; 
+
+SELECT * 
+FROM newspaper 
+LEFT JOIN online
+ON newspaper.email = online.email
+WHERE online.id IS NULL
+LIMIT 5; 
+
