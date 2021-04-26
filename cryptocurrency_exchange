@@ -1,0 +1,42 @@
+SELECT * 
+FROM transactions
+LIMIT 5; 
+-- id, user_id, date, currency, money_in, money_out
+
+SELECT sum(money_in) AS 'Total Buys'
+FROM transactions; 
+-- Find total money_in. 
+
+SELECT sum(money_out) AS 'Total Sells'
+FROM transactions; 
+-- Find total money_out. 
+
+SELECT COUNT(money_in) AS 'Bit_count'
+FROM transactions
+WHERE currency LIKE 'BIT'; 
+-- Count # transactions using bitcoin. 
+
+SELECT MAX(money_in) AS 'Max Buy Price', MAX(money_out) as 'Max Sell Price'
+FROM transactions; 
+-- Largest transaction is max_money_out = $15047. 
+
+SELECT AVG(money_in) AS 'Avg Buy Price- Ethereum'
+FROM transactions
+WHERE currency = 'ETH'; 
+-- Avg money_in for Ethereum is 131.89 (rounded). 
+
+SELECT date AS 'Date',
+  AVG(money_in) AS 'Avg Buy Price',
+  AVG(money_out) AS 'Avg Sell Price'
+FROM transactions 
+GROUP BY date
+LIMIT 5;
+-- Find the average buy/sell and group by date. 
+
+SELECT date AS 'Date',
+  ROUND(AVG(money_in), 2) AS 'Avg Buy',
+  ROUND(AVG(money_out), 2) AS 'Avg Sell'
+FROM transactions
+GROUP BY date
+LIMIT 5; 
+-- Find the Avg Buy, Avg Sell as estimates. 
