@@ -1,0 +1,14 @@
+SELECT * 
+FROM classes 
+JOIN students 
+ON classes.id = students.class_id
+LIMIT 5; 
+
+SELECT classes.id, classes.description, students.first_name, students.last_name, students.email
+FROM classes
+JOIN students
+ON classes.id = students.class_id 
+LIMIT 3; 
+
+
+
