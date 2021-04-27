@@ -1,0 +1,42 @@
+-- A memo was recently released stating that 9th grade students are unable to take both drama and band concurrently. The students currently enrolled in both classes will be dropped from drama and remain in band.
+
+-- Write a DELETE query that will remove 9th grade students enrolled in both band and drama from the drama_students table.
+
+DELETE FROM drama_students
+WHERE id IN (
+  SELECT id 
+  FROM band_students
+  WHERE grade = 9
+); 
+
+-- View # students in each grade. 
+SELECT grade, COUNT(*) AS 'count'
+FROM drama_students
+GROUP BY grade; 
+
+-- Delete all students in Drama who are in grade 9. 
+DELETE FROM drama_students
+WHERE grade = 9; 
+
+-- View all students in other grades in Drama. 
+SELECT grade, COUNT(*) AS 'count'
+FROM drama_students
+GROUP BY grade; 
+
+-- View all band students and their instruments.
+SELECT COUNT(*) AS 'count', instrument
+FROM band_students
+GROUP BY instrument; 
+
+-- Delete all records with Trombone and Trumpet from band_students table. 
+DELETE FROM band_students
+WHERE instrument LIKE '_rombone'; 
+
+DELETE FROM band_students
+WHERE instrument = 'Trumpet'; 
+
+-- View updated band_students table. 
+SELECT COUNT(*) AS 'count', instrument
+FROM band_students
+GROUP BY instrument; 
+
